@@ -1,6 +1,5 @@
-# 🏨 Hotel Management System
-### Object-Oriented Software Design Lab — JavaFX Application
-### Weeks 1–10 Integrated Project
+# 🏨 Eclipse Hotel Management System
+### JavaFX Application
 
 ---
 
@@ -49,18 +48,18 @@ HotelManagementSystem/
 
 ## 🗺️ OSDL Concept Map
 
-| Week | Concept | Where Used in HMS |
-|------|---------|-------------------|
-| **1** | OOP — Classes, Inheritance, Polymorphism, Abstraction | `Room` (abstract), `StandardRoom`, `DeluxeRoom`, `SuiteRoom`; `calculateTariff()` overridden in each; `Customer` (encapsulation) |
-| **2** | Wrapper Classes, Enum, Autoboxing/Unboxing | `RoomType` enum with prices + `calculateCost()`; `Integer nights`, `Double total` wrapper objects in billing; autoboxing in `bookRoom()` |
-| **3** | Multithreading — Thread class & Runnable interface | `HousekeepingNotifier implements Runnable` starts on every booking; `Thread.sleep()` simulates tasks; BookingPanel thread demo |
-| **4** | Synchronization — synchronized, wait(), notify() | `bookRoom()` and `checkoutRoom()` are `synchronized`; `wait(3000)` if room unavailable; `notifyAll()` after state change |
-| **5** | File I/O — FileWriter, FileReader, byte streams | `FileWriter` appends every action to `hotel_activity.log`; `BufferedReader(FileReader)` reads log back; `FileInputStream/OutputStream` for binary copy |
-| **6** | RandomAccessFile + Serialization/Deserialization | `rooms.raf` stores fixed-size room records; `seek(index * RECORD_SIZE)` for direct access; `ObjectOutputStream` serializes bookings to `bookings.dat` |
-| **7** | Generics — type params, bounded types, generic methods | `Pair<T,U>` associates `<Integer, Double>` room-bill; `RoomStore<T extends Room>` type-safe store; `isPriceAffordable<N extends Number>` bounded method |
-| **8** | Collections — ArrayList, HashMap, Iterator, sort | `ArrayList<Room>` stores rooms; `HashMap<Integer, Customer>` maps room→booking; `Iterator<Room>` for filtering; `Collections.sort()` for ordering |
-| **9** | JavaFX — Stage, Scene, Controls, EventHandling | Tab-based GUI with `TableView`, `GridPane` forms, `ComboBox`, `DatePicker`, `Alert`, `Button.setOnAction()` |
-| **10**| Complete integrated Hotel Management Application | All weeks combined; modular panels; in-memory + file persistence; standalone JavaFX desktop app |
+| Concept | Where Used in HMS |
+|---------|-------------------|
+| OOP — Classes, Inheritance, Polymorphism, Abstraction | `Room` (abstract), `StandardRoom`, `DeluxeRoom`, `SuiteRoom`; `calculateTariff()` overridden in each; `Customer` (encapsulation) |
+| Wrapper Classes, Enum, Autoboxing/Unboxing | `RoomType` enum with prices + `calculateCost()`; `Integer nights`, `Double total` wrapper objects in billing; autoboxing in `bookRoom()` |
+| Multithreading — Thread class & Runnable interface | `HousekeepingNotifier implements Runnable` starts on every booking; `Thread.sleep()` simulates tasks; BookingPanel thread demo |
+| Synchronization — synchronized, wait(), notify() | `bookRoom()` and `checkoutRoom()` are `synchronized`; `wait(3000)` if room unavailable; `notifyAll()` after state change |
+| File I/O — FileWriter, FileReader, byte streams | `FileWriter` appends every action to `hotel_activity.log`; `BufferedReader(FileReader)` reads log back; `FileInputStream/OutputStream` for binary copy |
+| RandomAccessFile + Serialization/Deserialization | `rooms.raf` stores fixed-size room records; `seek(index * RECORD_SIZE)` for direct access; `ObjectOutputStream` serializes bookings to `bookings.dat` |
+| Generics — type params, bounded types, generic methods | `Pair<T,U>` associates `<Integer, Double>` room-bill; `RoomStore<T extends Room>` type-safe store; `isPriceAffordable<N extends Number>` bounded method |
+| Collections — ArrayList, HashMap, Iterator, sort | `ArrayList<Room>` stores rooms; `HashMap<Integer, Customer>` maps room→booking; `Iterator<Room>` for filtering; `Collections.sort()` for ordering |
+| JavaFX — Stage, Scene, Controls, EventHandling | Tab-based GUI with `TableView`, `GridPane` forms, `ComboBox`, `DatePicker`, `Alert`, `Button.setOnAction()` |
+| Complete integrated Hotel Management Application | All weeks combined; modular panels; in-memory + file persistence; standalone JavaFX desktop app |
 
 ---
 
@@ -119,44 +118,44 @@ java  --module-path /usr/share/openjfx/lib --add-modules javafx.controls \
 
 ### 🛏 Room Management
 - Add Standard, Deluxe, Suite rooms with custom prices
-- Enum-based default pricing (Week 2)
+- Enum-based default pricing
 - TableView with live availability status
-- Sort by price or room number (Week 8: Collections.sort)
-- RandomAccessFile record reader (Week 6)
+- Sort by price or room number
+- RandomAccessFile record reader
 
 ### 📋 Booking
 - Full booking form: name, contact, room, check-in/out dates
-- Live cost preview using `Pair<Long, Double>` (Week 7)
-- Polymorphic `calculateTariff()` call (Week 1)
-- Synchronized booking prevents race conditions (Week 4)
-- Background `HousekeepingNotifier` thread (Week 3)
+- Live cost preview using `Pair<Long, Double>`
+- Polymorphic `calculateTariff()` call
+- Synchronized booking prevents race conditions
+- Background `HousekeepingNotifier` thread
 - Thread demo button shows concurrent booking attempt
 
 ### 🚪 Checkout
 - Room selector with guest info display
-- Confirmation Alert before checkout (Week 9)
-- Synchronized `checkoutRoom()` notifies waiting threads (Week 4)
+- Confirmation Alert before checkout
+- Synchronized `checkoutRoom()` notifies waiting threads
 - Full bill shown before confirmation
 
 ### 💰 Billing
-- Invoice generator with wrapper-class arithmetic (Week 2)
-- Enum tariff calculator with autoboxing demo (Week 2)
-- Pair<Integer, Double> for bill representation (Week 7)
+- Invoice generator with wrapper-class arithmetic
+- Enum tariff calculator with autoboxing demo
+- Pair<Integer, Double> for bill representation
 
 ### 📁 Activity Log
-- Reads all logged actions from `hotel_activity.log` via FileReader (Week 5)
-- Copy log button uses byte stream copy (Week 5)
-- File operations info panel (Week 5, 6)
-- Generics summary (Week 7)
+- Reads all logged actions from `hotel_activity.log` via FileReader
+- Copy log button uses byte stream copy
+- File operations info panel
+- Generics summary
 
 ---
 
 ## 📝 Files Created at Runtime
 | File | Created by | Purpose |
 |------|-----------|---------|
-| `hotel_activity.log` | FileWriter (Week 5) | Activity log |
-| `bookings.dat` | ObjectOutputStream (Week 6) | Serialized bookings |
-| `rooms.raf` | RandomAccessFile (Week 6) | Fixed-size room records |
+| `hotel_activity.log` | FileWriter | Activity log |
+| `bookings.dat` | ObjectOutputStream | Serialized bookings |
+| `rooms.raf` | RandomAccessFile | Fixed-size room records |
 
 ---
 
